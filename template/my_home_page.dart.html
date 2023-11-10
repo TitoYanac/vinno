@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>my_home_page.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+my_home_page.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter_bloc/flutter_bloc.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:vinno/presentation/bloc/bloc_navigation_bar.dart'</span><span class="s2">;</span>
+
+<span class="s2">class </span><span class="s0">MyHomePage </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">const </span><span class="s0">MyHomePage({Key? key}) : </span><span class="s2">super</span><span class="s0">(key: key)</span><span class="s2">;</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_MyHomePageState createState() =&gt; _MyHomePageState()</span><span class="s2">;</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_MyHomePageState </span><span class="s2">extends </span><span class="s0">State&lt;MyHomePage&gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">return </span><span class="s0">Scaffold(</span>
+      <span class="s0">backgroundColor: Colors.red</span><span class="s2">,</span>
+      <span class="s0">appBar: AppBar(</span>
+        <span class="s0">title: Text(</span>
+          <span class="s1">'Vinno'</span><span class="s2">,</span>
+          <span class="s0">style: TextStyle(</span>
+            <span class="s0">fontSize: </span><span class="s3">24.0</span><span class="s2">,</span>
+            <span class="s0">fontWeight: FontWeight.bold</span><span class="s2">,</span>
+            <span class="s0">color: Colors.white</span><span class="s2">,</span>
+          <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">body: Center(</span>
+        <span class="s0">child: BlocBuilder&lt;BlocNavigationBar</span><span class="s2">, </span><span class="s0">BlocNavigationBarState&gt;(</span>
+          <span class="s0">builder: (context</span><span class="s2">, </span><span class="s0">state) {</span>
+            <span class="s2">return </span><span class="s0">Text(</span>
+              <span class="s0">state.index.toString()</span><span class="s2">,</span>
+              <span class="s0">style: TextStyle(</span>
+                <span class="s0">fontSize: </span><span class="s3">36.0</span><span class="s2">,</span>
+                <span class="s0">fontWeight: FontWeight.bold</span><span class="s2">,</span>
+              <span class="s0">)</span><span class="s2">,</span>
+            <span class="s0">)</span><span class="s2">;</span>
+          <span class="s0">}</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">bottomNavigationBar: BlocBuilder&lt;BlocNavigationBar</span><span class="s2">, </span><span class="s0">BlocNavigationBarState&gt;(</span>
+        <span class="s0">builder: (context</span><span class="s2">, </span><span class="s0">state) {</span>
+          <span class="s2">return </span><span class="s0">Container(</span>
+            <span class="s0">color: Colors.green</span><span class="s2">,</span>
+            <span class="s0">child: BottomNavigationBar(</span>
+              <span class="s0">selectedItemColor: Colors.green</span><span class="s2">,</span>
+              <span class="s0">unselectedItemColor: Colors.blue</span><span class="s2">,</span>
+              <span class="s0">items: [</span>
+                <span class="s0">BottomNavigationBarItem(</span>
+                  <span class="s0">icon: Icon(Icons.home)</span><span class="s2">,</span>
+                  <span class="s0">label: </span><span class="s1">'Home'</span><span class="s2">,</span>
+                  <span class="s0">backgroundColor: Colors.blue</span><span class="s2">,</span>
+                <span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">BottomNavigationBarItem(</span>
+                  <span class="s0">icon: Icon(Icons.search)</span><span class="s2">,</span>
+                  <span class="s0">label: </span><span class="s1">'Search'</span><span class="s2">,</span>
+                  <span class="s0">backgroundColor: Colors.blue</span><span class="s2">,</span>
+                <span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">BottomNavigationBarItem(</span>
+                  <span class="s0">icon: Icon(Icons.settings)</span><span class="s2">,</span>
+                  <span class="s0">label: </span><span class="s1">'Settings'</span><span class="s2">,</span>
+                  <span class="s0">backgroundColor: Colors.blue</span><span class="s2">,</span>
+                <span class="s0">)</span><span class="s2">,</span>
+                <span class="s0">BottomNavigationBarItem(</span>
+                  <span class="s0">icon: Icon(Icons.person)</span><span class="s2">,</span>
+                  <span class="s0">label: </span><span class="s1">'Account'</span><span class="s2">,</span>
+                  <span class="s0">backgroundColor: Colors.blue</span><span class="s2">,</span>
+                <span class="s0">)</span><span class="s2">,</span>
+              <span class="s0">]</span><span class="s2">,</span>
+              <span class="s0">elevation: </span><span class="s3">0.0</span><span class="s2">,</span>
+
+              <span class="s0">currentIndex: state.index</span><span class="s2">,</span>
+              <span class="s0">onTap: (index) {</span>
+                <span class="s0">context.read&lt;BlocNavigationBar&gt;().changeIndex(index)</span><span class="s2">;</span>
+              <span class="s0">}</span><span class="s2">,</span>
+            <span class="s0">)</span><span class="s2">,</span>
+          <span class="s0">)</span><span class="s2">;</span>
+        <span class="s0">}</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>
