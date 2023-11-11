@@ -38,16 +38,17 @@ class _AuthRegistroPrePageState extends State<AuthRegistroPrePage> {
         const SizedBox(height: 12),
         InkWell(
           onTap: () async {
-            final user = await _auth.signInWithGoogle();
-            if (user != null) {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => MyHomePage(user: user,),
-              ));
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Error al iniciar sesión")),
-              );
-            }
+            _auth.signInWithGoogle().then((user){
+              if (user != null) {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => MyHomePage(user: user,),
+                ));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Error al iniciar sesión")),
+                );
+              }
+            });
           },
           onTapDown: (hasFocus) {
             print(hasFocus);

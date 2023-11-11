@@ -14,8 +14,7 @@ class _CreateRandomRecipeTestState extends State<CreateRandomRecipeTest> {
   void saveRecipeToFirebase() {
     _firestore
         .collection('recipes')
-        .doc('Tacos de Pescado')
-        .set(
+        .add(
         {
           "name": "Tacos de Pescado",
           "creatorName": "Carlos Ruiz",

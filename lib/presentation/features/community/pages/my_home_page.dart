@@ -33,7 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
         //const CreateRandomRecipeTest(),
 
         const Center(child: Text("1")),
-        const Center(child: Text("2")),
+        //const Center(child: Text("2")),
+        const RecipeCreatorScreen(),
         //const CronometroPage(),
         Center(child: Text(widget.user!.displayName!)),
 
@@ -44,8 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
         //const CreateRandomRecipeTest(),
 
         const Center(child: Text("1")),
-        //const Center(child: Text("2")),
-        const RecipeCreatorScreen(),
+        const Center(child: Text("2")),
+        //const RecipeCreatorScreen(),
         //const CronometroPage(),
         const AuthRegistroPrePage(),
 

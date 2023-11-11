@@ -23,6 +23,8 @@ class _RecipeCardState extends State<RecipeCard> {
     super.initState();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -287,85 +289,4 @@ class _RecipeCardState extends State<RecipeCard> {
       ),
     );
   }
-/*
-  Widget _buildRecipeImage() {
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-          child: Image.network(
-            widget.recipe.image,
-            fit: BoxFit.cover,
-            height: 200,
-            width: double.infinity,
-          ),
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.favorite,
-            color: _isLiked ? Colors.red : Colors.white,
-          ),
-          onPressed: () {
-            setState(() {
-              _isLiked = !_isLiked;
-            });
-          },
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRecipeInfo() {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        children: [
-          Text(
-            widget.recipe.name,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildIconText(Icons.star, widget.recipe.rating.toString()),
-              _buildIconText(
-                  Icons.access_time, '${widget.recipe.cookingTime} m'),
-              _buildIconText(Icons.people, '${widget.recipe.servings} p'),
-              _buildUserInfo(),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildIconText(IconData icon, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 14),
-        SizedBox(width: 4),
-        Text(text),
-      ],
-    );
-  }
-
-  Widget _buildUserInfo() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(widget.recipe.creatorImage),
-        ),
-        SizedBox(width: 8),
-        Text(
-          widget.recipe.creatorName,
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
-    );
-  }
-  */
 }

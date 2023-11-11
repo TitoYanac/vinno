@@ -7,7 +7,7 @@ class BrandText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Logo',
+      'Vinno',
       style: GoogleFonts.lobster(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,

@@ -36,8 +36,8 @@ class ThemeLight extends BlocThemeState {
         onError: Colors.white,
         background: Colors.white,
         onBackground: Color.fromRGBO(62, 68, 71, 1),//icons navbar
-        surface: Colors.white,
-        onSurface: Colors.white,
+        surface: Color.fromRGBO(253, 253, 253, 1),
+        onSurface: Color.fromRGBO(120, 120, 120, 1),
         onSurfaceVariant: Colors.white,
         shadow: Colors.white,
         
@@ -51,21 +51,23 @@ class ThemeDark extends BlocThemeState {
 
   static ThemeData _buildThemeDark() {
     return ThemeData.dark().copyWith(
-      scaffoldBackgroundColor: const Color.fromRGBO(249, 79, 79, 1),
+      scaffoldBackgroundColor: const Color.fromRGBO(236, 236, 236, 1),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
-        primary: Color.fromRGBO(79, 240, 182, 1),
+        primary: Color.fromRGBO(130, 15, 40, 1),
         onPrimary: Colors.white,
-        secondary: Color.fromRGBO(9, 87, 195, 1),
+        secondary: Color.fromRGBO(9, 71, 94, 1),
         onSecondary: Colors.white,
-        tertiary: Color.fromRGBO(116, 246, 116, 1),
+        tertiary: Colors.white,
         error: Colors.red,
         onError: Colors.white,
         background: Colors.white,
-        onBackground: Color.fromRGBO(0, 0, 0, 1),
-        surface: Color.fromRGBO(255, 148, 148, 1),
-        onSurface: Colors.white,
-        shadow: Color.fromRGBO(217, 217, 217, 1),
+        onBackground: Color.fromRGBO(62, 68, 71, 1),//icons navbar
+        surface: Color.fromRGBO(253, 253, 253, 1),
+        onSurface: Color.fromRGBO(120, 120, 120, 1),
+        onSurfaceVariant: Colors.white,
+        shadow: Colors.white,
+
       ),
     );
   }

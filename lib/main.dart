@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vinno/loading_screen.dart';
 import 'package:vinno/presentation/bloc/bloc_navigation_bar.dart';
 import 'package:vinno/presentation/bloc/bloc_theme.dart';
 import 'package:vinno/presentation/features/community/pages/my_home_page.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
             title: 'Vinno',
             debugShowCheckedModeBanner: false,
             theme: state.themeData,
-            home: const MyHomePage(),
+            home: const LoadingScreen(),
           );
         },
       ),
