@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:vinno/presentation/features/auth/widgets/template/auth_registro_pre_page.dart';
 import 'package:vinno/presentation/features/community/pages/cronometro_page.dart';
+import 'package:vinno/presentation/features/community/pages/under_construction_screen.dart';
 import 'package:vinno/presentation/features/community/widgets/template/community_body.dart';
 import 'package:vinno/presentation/features/recipe/pages/recipe_creator_screen.dart';
 
@@ -11,6 +12,7 @@ import '../../../bloc/bloc_navigation_bar.dart';
 import '../../../widgets/organisms/custom_app_bar.dart';
 import '../../../widgets/organisms/custom_bottom_navigation_bar.dart';
 import '../../../widgets/organisms/menu_side_drawer.dart';
+import '../../user/pages/user_profile_screen.dart';
 import 'create_random_recipe_test.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -32,11 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
         const CommunityBody(),
         //const CreateRandomRecipeTest(),
 
-        const Center(child: Text("1")),
+        const UnderConstructionScreen(),
         //const Center(child: Text("2")),
         const RecipeCreatorScreen(),
         //const CronometroPage(),
-        Center(child: Text(widget.user!.displayName!)),
+        UserProfileScreen(user: widget.user!),
+        //Center(child: Text(widget.user!.displayName!)),
 
       ];
     }else{
@@ -44,8 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
         const CommunityBody(),
         //const CreateRandomRecipeTest(),
 
-        const Center(child: Text("1")),
-        const Center(child: Text("2")),
+        const AuthRegistroPrePage(),
+        const AuthRegistroPrePage(),
         //const RecipeCreatorScreen(),
         //const CronometroPage(),
         const AuthRegistroPrePage(),

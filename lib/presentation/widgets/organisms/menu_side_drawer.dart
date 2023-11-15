@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../molecules/drawer_list_tile.dart';
@@ -10,6 +11,7 @@ class MenuSideDrawer extends StatefulWidget {
 }
 
 class _MenuSideDrawerState extends State<MenuSideDrawer> {
+  User? user = FirebaseAuth.instance.currentUser;
   final menuItems = [
     DrawerItem(Icons.home, 'Comunidad', () {}),
     DrawerItem(Icons.verified_user, 'Cuenta', () {}),
@@ -29,20 +31,20 @@ class _MenuSideDrawerState extends State<MenuSideDrawer> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 color: Colors.transparent
               ),
               child: Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 22.0,
                   ),
-                  SizedBox(width: 12,),
+                  const SizedBox(width: 12,),
                   Text(
-                    "Hola, Jesús",
-                    style: TextStyle(color: Colors.white),
+                    "Hola, ${user?.displayName}",
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),

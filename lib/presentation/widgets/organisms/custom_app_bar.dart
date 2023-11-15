@@ -23,7 +23,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
       backgroundColor: Colors.white,
       actions: <Widget>[
         IconButton(
-          icon: const Icon(Icons.menu),
+          icon: Icon(Icons.menu, color: Theme.of(context).colorScheme.primary,),
           onPressed: () {
             if (widget.sideMenuKey.currentState!.isOpened) {
               widget.sideMenuKey.currentState!.closeSideMenu();

@@ -1,6 +1,9 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:faker/faker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +26,7 @@ class _RecipeCreatorScreenState extends State<RecipeCreatorScreen> {
   String? _imageUrl;
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final User user = FirebaseAuth.instance.currentUser!;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   final TextEditingController _nameRecipeController = TextEditingController();
@@ -169,7 +173,7 @@ class _RecipeCreatorScreenState extends State<RecipeCreatorScreen> {
     final imageUrl = await storageRef.getDownloadURL();
 
     // Construir los datos de la receta
-    final recipeData = {
+    /*final recipeData = {
       'name': _nameRecipeController.text,
       'numPersons': int.parse(_numPersonsController.text),
       'difficulty': int.parse(_difficultyController.text),
@@ -180,54 +184,34 @@ class _RecipeCreatorScreenState extends State<RecipeCreatorScreen> {
         'unit': ingredient.unid,
       }).toList(),
       'steps': _allSteps,
-      // Agrega cualquier otro campo que necesites
-    };
-
-    final recipeData2 = {
-      "name": "Tacos de Pescado",
-      "creatorName": "Carlos Ruiz",
-      "creatorImage": "url_a_la_imagen_de_carlos.jpg",
-      "image": "url_a_la_imagen_de_tacos_de_pescado.jpg",
-      "rating": 4.6,
-      "cookingTime": 20,
-      "servings": 4,
-      "ingredients": [
-        "400g de filetes de pescado blanco",
-        "8 tortillas de maíz",
-        "200g de repollo morado rallado",
-        "2 aguacates maduros",
-        "1 limón",
-        "100g de crema fresca",
-        "2 cucharadas de aceite de oliva",
-        "1 cucharadita de chile en polvo",
-        "1 cucharadita de comino en polvo",
-        "Sal y pimienta al gusto",
-        "Cilantro fresco picado para decorar",
-        "Salsa picante al gusto"
-      ],
-      "steps": [
-        "Sazonar los filetes de pescado con chile en polvo, comino, sal y pimienta.",
-        "Calentar el aceite en una sartén y cocinar el pescado hasta que esté dorado y cocido.",
-        "Calentar las tortillas en una sartén o comal.",
-        "Desmenuzar el pescado cocido con un tenedor.",
-        "Cortar los aguacates por la mitad, retirar el hueso y hacer un puré con su carne, luego sazonar con limón, sal y pimienta.",
-        "Armar los tacos colocando una base de puré de aguacate en cada tortilla, luego el pescado y el repollo rallado por encima.",
-        "Añadir un toque de crema fresca y cilantro picado.",
-        "Servir inmediatamente con limón y salsa picante al lado."
-      ],
+    };*/
+    String date = DateTime.now().toString();
+    final recipeData = {
+      "name": _nameRecipeController.text,
+      "creatorName": user!.displayName,
+      "creatorImage": user.photoURL,
+      "image": imageUrl,
+      "rating": Random().nextDouble() * 5,
+      "cookingTime": Random().nextInt(105) + 15,
+      "servings": int.parse(_numPersonsController.text),
+      "ingredients": _allIngredients.map((ingredient) => {
+        'name': ingredient.name,
+        'unit': ingredient.unid,
+      }).toList(),
+      'steps': _allSteps,
       "categories": ["Plato principal", "Comida Mexicana"],
-      "creationDate": "2023-11-08T14:00:00Z",
-      "lastModifiedDate": "2023-11-08T14:30:00Z",
+      "creationDate": date,
+      "lastModifiedDate": date,
       "nutritionInfo": {
-        "calories": 350,
-        "fat": 15,
-        "protein": 25,
-        "carbohydrates": 35
+        "calories": Random().nextInt(350) + 15,
+        "fat": Random().nextInt(150) + 15,
+        "protein": Random().nextInt(25),
+        "carbohydrates": Random().nextInt(105) + 15
       },
       "utensils": ["Sartén", "Comal o sartén para tortillas", "Cuchillo", "Tabla de cortar"],
-      "difficulty": 2,
+      "difficulty": int.parse(_difficultyController.text),
       "estimatedCost": 12.00,
-      "preparationTime": 15,
+      "preparationTime": Random().nextInt(90) + 15,
       "additionalInstructions": "Añadir otras verduras frescas como tomate o cebolla si se desea.",
       "comments": [],
       "stepImages": [],
@@ -238,8 +222,8 @@ class _RecipeCreatorScreenState extends State<RecipeCreatorScreen> {
       "allergens": ["pescado"],
       "dietaryRestrictions": [],
       "source": "Recetario de Tacos Mexicanos",
-      "favoriteCount": 250,
-      "sharedCount": 130,
+      "favoriteCount": Random().nextInt(1500),
+      "sharedCount": Random().nextInt(1300),
       "isPublished": true,
       "notes": "Para una versión más ligera, se puede usar yogur griego en lugar de crema fresca."
     };
